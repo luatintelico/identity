@@ -1,0 +1,40 @@
+﻿@page "/identity"
+@using System.IO
+@using Microsoft.AspNetCore.Hosting
+@using BlazorApp1ML.Model
+
+@inject IWebHostEnvironment env
+<div class="container">
+  <h1>Identity</h1>
+  <h3>@Message</h3>
+  <p>
+    This component allows identitying the input.
+    Enter an input to start identitying the input.
+  </p>
+  <form @onsubmit="OnSubmit">
+    <textarea style="width:400px" @bind="content" />
+    <br /><br />
+    <button type="submit">Identity</button>
+  </form>
+
+</div>
+@code {
+    string Message = "No input";
+    private string content;
+    
+    private async void OnSubmit()
+    {
+        var path = $"{env.WebRootPath}\\MLModel.zip";
+        // Create single instance of sample data from first line of dataset for model input
+        ModelInput sampleData = new ModelInput()
+        {
+            Col2 = content
+        };
+
+        // Make a single prediction on the sample data and print results
+        var predictionResult = ConsumeModel.Predict(sampleData);
+
+        Message = $"\n\nPredicted Col1 value {predictionResult.Prediction} \nPredicted Col1 scores: [{String.Join(",", predictionResult.Score)}]\n\n";
+        this.StateHasChanged();
+    }
+}

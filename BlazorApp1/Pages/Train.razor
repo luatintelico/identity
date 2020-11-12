@@ -1,0 +1,50 @@
+﻿@page "/train"
+@using System.IO
+@using Microsoft.AspNetCore.Hosting
+@using BlazorApp1ML.Model
+
+@inject IWebHostEnvironment env
+
+<div class="container">
+  <h1>Train data</h1>
+  <h3>@Message</h3>
+  <p>
+    This component allows sending data to the server.
+    Select a datable file to start the upload and building model process.
+  </p>
+  <form @onsubmit="OnSubmit">
+    @*
+    Uses the BlazorFileInput component: http://blog.stevensanderson.com/2019/09/13/blazor-inputfile/
+    Note how the "accept" attribute gets passed to the rendered input HTML element even when not declared explicitly as a parameter by the InputFile component
+    See: https://docs.microsoft.com/en-us/aspnet/core/blazor/components?view=aspnetcore-3.1#attribute-splatting-and-arbitrary-parameters
+    *@
+    <InputFile OnChange="OnInputFileChange" accept="*/*"/>
+    <br /><br />
+    <button type="submit">Upload Selected File</button>
+  </form>
+
+</div>
+
+@code {
+    string Message = "No files selected";
+    IBrowserFile selectedFile;
+    private void OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        Message = $"The file selected";
+        this.StateHasChanged();
+
+    }
+    private async void OnSubmit()
+    {
+        Stream stream = selectedFile.OpenReadStream(long.MaxValue);
+        var path = $"{env.WebRootPath}\\{selectedFile.Name}";
+        FileStream fs = File.Create(path);
+        await stream.CopyToAsync(fs);
+        stream.Close();
+        fs.Close();
+        ModelBuilder.CreateModel(path);
+        Message = $"The file uploaded on server";
+        this.StateHasChanged();
+    }
+}
