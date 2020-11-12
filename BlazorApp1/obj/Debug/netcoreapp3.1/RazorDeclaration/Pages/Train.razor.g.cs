@@ -56,27 +56,20 @@ using Microsoft.AspNetCore.Components.Web;
 #nullable disable
 #nullable restore
 #line 7 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 8 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
+#line 8 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using BlazorApp1;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
+#line 9 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using BlazorApp1.Shared;
 
 #line default
@@ -103,6 +96,20 @@ using BlazorApp1ML.Model;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+using BlazorApp1.Services;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+using BlazorInputFile;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/train")]
     public partial class Train : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -112,25 +119,24 @@ using BlazorApp1ML.Model;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 28 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 31 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
        
     string Message = "No files selected";
-    IBrowserFile selectedFile;
-    private void OnInputFileChange(InputFileChangeEventArgs e)
+    IFileListEntry file;
+    async Task HandleFileSelected(IFileListEntry[] files)
     {
-        selectedFile = e.File;
+        file = files.FirstOrDefault();
         Message = $"The file selected";
         this.StateHasChanged();
-
     }
+
     private async void OnSubmit()
     {
-        Stream stream = selectedFile.OpenReadStream(long.MaxValue);
-        var path = $"{env.WebRootPath}\\{selectedFile.Name}";
-        FileStream fs = File.Create(path);
-        await stream.CopyToAsync(fs);
-        stream.Close();
-        fs.Close();
+        string path="";
+        if (file != null)
+        {
+            path = await fileUpload.UploadAsync(file);
+        }
         ModelBuilder.CreateModel(path);
         Message = $"The file uploaded on server";
         this.StateHasChanged();
@@ -140,6 +146,7 @@ using BlazorApp1ML.Model;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IWebHostEnvironment env { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IFileUpload fileUpload { get; set; }
     }
 }
 #pragma warning restore 1591

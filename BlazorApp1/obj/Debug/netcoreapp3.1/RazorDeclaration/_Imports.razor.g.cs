@@ -56,27 +56,20 @@ using Microsoft.AspNetCore.Components.Web;
 #nullable disable
 #nullable restore
 #line 7 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
-using Microsoft.AspNetCore.Components.Web.Virtualization;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
-#line 8 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
+#line 8 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using BlazorApp1;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
+#line 9 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using BlazorApp1.Shared;
 
 #line default

@@ -2,7 +2,10 @@
 @using System.IO
 @using Microsoft.AspNetCore.Hosting
 @using BlazorApp1ML.Model
+@using BlazorApp1.Services
+@using BlazorInputFile
 
+@inject IFileUpload fileUpload
 @inject IWebHostEnvironment env
 
 <div class="container">
@@ -18,7 +21,7 @@
     Note how the "accept" attribute gets passed to the rendered input HTML element even when not declared explicitly as a parameter by the InputFile component
     See: https://docs.microsoft.com/en-us/aspnet/core/blazor/components?view=aspnetcore-3.1#attribute-splatting-and-arbitrary-parameters
     *@
-    <InputFile OnChange="OnInputFileChange" accept="*/*"/>
+    <InputFile OnChange="HandleFileSelected" accept="*/*"/>
     <br /><br />
     <button type="submit">Upload Selected File</button>
   </form>
@@ -27,22 +30,21 @@
 
 @code {
     string Message = "No files selected";
-    IBrowserFile selectedFile;
-    private void OnInputFileChange(InputFileChangeEventArgs e)
+    IFileListEntry file;
+    async Task HandleFileSelected(IFileListEntry[] files)
     {
-        selectedFile = e.File;
+        file = files.FirstOrDefault();
         Message = $"The file selected";
         this.StateHasChanged();
-
     }
+
     private async void OnSubmit()
     {
-        Stream stream = selectedFile.OpenReadStream(long.MaxValue);
-        var path = $"{env.WebRootPath}\\{selectedFile.Name}";
-        FileStream fs = File.Create(path);
-        await stream.CopyToAsync(fs);
-        stream.Close();
-        fs.Close();
+        string path="";
+        if (file != null)
+        {
+            path = await fileUpload.UploadAsync(file);
+        }
         ModelBuilder.CreateModel(path);
         Message = $"The file uploaded on server";
         this.StateHasChanged();
