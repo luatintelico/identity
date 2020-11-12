@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net5.0": {
+    ".NETCoreApp,Version=v3.1": {
       "Microsoft.CSharp/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1528,7 +1528,7 @@
       },
       "BlazorApp1ML.Model/1.0.0": {
         "type": "project",
-        "framework": ".NETStandard,Version=v2.1",
+        "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Microsoft.ML": "1.5.0"
         },
@@ -5517,7 +5517,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net5.0": [
+    ".NETCoreApp,Version=v3.1": [
       "BlazorApp1ML.Model >= 1.0.0",
       "Microsoft.ML >= 1.5.0"
     ]
@@ -5539,15 +5539,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net5.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\Users\\USER\\Source\\Repos\\BlazorApp1\\BlazorApp1ML.Model\\BlazorApp1ML.Model.csproj": {
               "projectPath": "C:\\Users\\USER\\Source\\Repos\\BlazorApp1\\BlazorApp1ML.Model\\BlazorApp1ML.Model.csproj"
@@ -5562,8 +5562,8 @@
       }
     },
     "frameworks": {
-      "net5.0": {
-        "targetAlias": "net5.0",
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.ML": {
             "target": "Package",
