@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /src
 COPY ["BlazorApp1/BlazorApp1.csproj", "BlazorApp1/"]
 COPY ["BlazorApp1ML.Model/BlazorApp1ML.Model.csproj", "BlazorApp1ML.Model/"]
