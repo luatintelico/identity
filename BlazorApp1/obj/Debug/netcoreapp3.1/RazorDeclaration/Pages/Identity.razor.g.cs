@@ -76,6 +76,13 @@ using BlazorApp1.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 10 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
+using BlazorInputFile;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Identity.razor"
 using System.IO;
 

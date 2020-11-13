@@ -76,35 +76,35 @@ using BlazorApp1.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 11 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\_Imports.razor"
 using System.IO;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 2 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
 using Microsoft.AspNetCore.Hosting;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 3 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
 using BlazorApp1ML.Model;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 4 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
 using BlazorApp1.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 5 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
 using BlazorInputFile;
 
 #line default
@@ -119,7 +119,7 @@ using BlazorInputFile;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 31 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
+#line 30 "C:\Users\USER\Source\Repos\BlazorApp1\BlazorApp1\Pages\Train.razor"
        
     string Message = "No files selected";
     IFileListEntry file;
